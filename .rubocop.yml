@@ -1,0 +1,70 @@
+AllCops:
+  TargetRubyVersion: 2.1
+  Exclude:
+    - 'lib/koma/ext/**/*'
+  
+Lint/Eval:
+  Enabled: false
+
+Lint/HandleExceptions:
+  Enabled: false
+
+Lint/UselessAssignment:
+  Enabled: false
+
+Metrics/AbcSize:
+  Max: 50
+
+Metrics/ClassLength:
+  Max: 120
+
+Metrics/CyclomaticComplexity:
+  Max: 15
+
+Metrics/LineLength:
+  Max: 120
+
+Metrics/MethodLength:
+  Max: 30
+
+Metrics/PerceivedComplexity:
+  Max: 15
+
+Performance/StringReplacement:
+  Enabled: false
+
+Style/Alias:
+  Enabled: false
+
+Style/BarePercentLiterals:
+  Enabled: false
+
+Style/ClassAndModuleChildren:
+  Enabled: false
+
+Style/Documentation:
+  Enabled: false
+
+Style/MutableConstant:
+  Enabled: false
+
+Style/MultilineOperationIndentation:
+  Enabled: false
+
+Style/StabbyLambdaParentheses:
+  Enabled: false
+
+Style/PercentLiteralDelimiters:
+  Enabled: false
+
+Style/PredicateName:
+  Enabled: false
+
+Style/RedundantSelf:
+  Enabled: false
+
+Style/SymbolProc:
+  Enabled: false
+
+Style/BracesAroundHashParameters:
+  Enabled: false
