@@ -5,7 +5,7 @@
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'bun', github: "k1LoW/koma"
+gem 'koma', github: "k1LoW/koma"
 ```
 
 And then execute:
