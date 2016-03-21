@@ -1,4 +1,4 @@
-# [PoC]Koma
+# [PoC]Koma [![Build Status](https://travis-ci.org/k1LoW/koma.svg?branch=master)](https://travis-ci.org/k1LoW/koma)
 
 ## Installation
 
