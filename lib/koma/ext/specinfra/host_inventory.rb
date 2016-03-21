@@ -1,11 +1,11 @@
 module Specinfra
   class HostInventory
-    EXTRA_KEYS = %w(package)
-    
+    EXTRA_KEYS = %w(package user)
+
     def self.inventory_keys
       KEYS + EXTRA_KEYS
     end
-    
+
     def each
       inventory_keys.each do |k|
         yield k, self[k]
