@@ -1,6 +1,6 @@
 module Specinfra
   class HostInventory
-    EXTRA_KEYS = %w(package user)
+    EXTRA_KEYS = %w(package user group)
 
     def self.inventory_keys
       KEYS + EXTRA_KEYS
