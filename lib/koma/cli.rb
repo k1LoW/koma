@@ -28,15 +28,22 @@ module Koma
       puts JSON.pretty_generate out(options[:key])
     end
 
+    desc 'exec', 'stdout local inventory'
+    option :key,
+           type: :string,
+           banner: '<key1,key2,..>',
+           desc: 'inventory keys',
+           aliases: :k
+    def exec
+      set :backend, :exec
+      puts JSON.pretty_generate out(options[:key])
+    end
+
     desc 'keys', 'server inventory keys'
     def keys
       inventory_keys.each do |key|
         puts key
       end
-    end
-
-    def method_missing(name)
-      ssh(name.to_s)
     end
 
     private
@@ -53,8 +60,11 @@ module Koma
                key.split(',')
              end
       keys.each do |k|
-        inventory = Specinfra.backend.host_inventory[k]
-        out[k] = inventory unless inventory.nil?
+        begin
+          out[k] = Specinfra.backend.host_inventory[k]
+        rescue NotImplementedError
+          out[k] = nil
+        end
       end
       out
     end
