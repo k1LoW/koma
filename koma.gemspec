@@ -9,8 +9,8 @@ Gem::Specification.new do |spec|
   spec.authors       = ['k1LoW']
   spec.email         = ['k1lowxb@gmail.com']
 
-  spec.summary       = 'Collect and show server inventory'
-  spec.description   = 'Collect and show server inventory'
+  spec.summary       = 'Koma gather host inventory without agent.'
+  spec.description   = 'Koma gather host inventory without agent.'
   spec.homepage      = 'https://github.com/k1LoW/koma'
   spec.license       = 'MIT'
 
