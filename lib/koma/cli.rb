@@ -68,6 +68,7 @@ module Koma
       keys.each do |k|
         begin
           out[k] = Specinfra.backend.host_inventory[k]
+          out[k] = Specinfra.backend.host_inventory[k].inspect if k == 'ec2'
         rescue NotImplementedError
           out[k] = nil
         end
