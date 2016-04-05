@@ -5,7 +5,7 @@ include Specinfra::Helper::Set
 
 module Koma
   class CLI < Thor
-    desc 'ssh', 'stdout server inventory'
+    desc 'ssh', 'stdout remote host inventory'
     option :key,
            type: :string,
            banner: '<key1,key2,..>',
@@ -34,7 +34,7 @@ module Koma
       puts JSON.pretty_generate out(options[:key])
     end
 
-    desc 'exec', 'stdout local inventory'
+    desc 'exec', 'stdout local host inventory'
     option :key,
            type: :string,
            banner: '<key1,key2,..>',
@@ -45,7 +45,7 @@ module Koma
       puts JSON.pretty_generate out(options[:key])
     end
 
-    desc 'keys', 'server inventory keys'
+    desc 'keys', 'host inventory keys'
     def keys
       inventory_keys.each do |key|
         puts key

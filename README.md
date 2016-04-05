@@ -12,15 +12,46 @@ gem 'koma'
 
 And then execute:
 
-    $ bundle
+```sh
+$ bundle
+```
 
 Or install it yourself as:
 
-    $ gem install koma
+```sh
+$ gem install koma
+```
 
 ## Usage
 
-    $ koma ssh example.com
+If you login remote server via `ssh example.com`, you can execute:
+
+```sh
+$ koma ssh example.com
+```
+
+And get stdout like [this](stdout_sample.json).
+
+## Host inventory keys
+
+```sh
+$ koma keys
+memory
+ec2
+hostname
+domain
+fqdn
+platform
+platform_version
+filesystem
+cpu
+virtualization
+kernel
+block_device
+package
+user
+group
+```
 
 ## Contributing
 
