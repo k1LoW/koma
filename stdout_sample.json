@@ -6,27 +6,27 @@
       "free": "1048572kB"
     },
     "total": "1884188kB",
-    "free": "1615536kB",
+    "free": "1588244kB",
     "buffers": "948kB",
-    "cached": "150828kB",
-    "active": "86568kB",
-    "inactive": "129780kB",
-    "dirty": "1532kB",
+    "cached": "172612kB",
+    "active": "138012kB",
+    "inactive": "98332kB",
+    "dirty": "1576kB",
     "writeback": "0kB",
-    "anon_pages": "64584kB",
-    "mapped": "21152kB",
-    "slab": "22468kB",
-    "slab_reclaimable": "12664kB",
-    "slab_unreclaim": "9804kB",
-    "page_tables": "3832kB",
+    "anon_pages": "62824kB",
+    "mapped": "24004kB",
+    "slab": "27512kB",
+    "slab_reclaimable": "16688kB",
+    "slab_unreclaim": "10824kB",
+    "page_tables": "4560kB",
     "nfs_unstable": "0kB",
     "bounce": "0kB",
     "commit_limit": "1990664kB",
-    "committed_as": "275760kB",
+    "committed_as": "283152kB",
     "vmalloc_total": "34359738367kB",
     "vmalloc_used": "11452kB",
-    "vmalloc_chunk": "34359718396kB",
-    "annon_huge_pages": "8192kB",
+    "vmalloc_chunk": "34359717372kB",
+    "annon_huge_pages": "4096kB",
     "huge_pages_total": "0",
     "huge_pages_free": "0",
     "huge_pages_rsvd": "0",
@@ -43,8 +43,8 @@
   "filesystem": {
     "/dev/mapper/centos-root": {
       "kb_size": "39863280",
-      "kb_used": "1077236",
-      "kb_available": "38786044",
+      "kb_used": "1086108",
+      "kb_available": "38777172",
       "percent_used": "3%",
       "mount": "/"
     },
@@ -71,8 +71,8 @@
     },
     "vagrant": {
       "kb_size": "243941376",
-      "kb_used": "206565348",
-      "kb_available": "37376028",
+      "kb_used": "206489824",
+      "kb_available": "37451552",
       "percent_used": "85%",
       "mount": "/vagrant"
     }
@@ -3306,6 +3306,580 @@
       "members": [
 
       ]
+    }
+  },
+  "service": {
+    "auditd": {
+      "enabled": true,
+      "running": true
+    },
+    "autovt@": {
+      "enabled": false,
+      "running": false
+    },
+    "blk-availability": {
+      "enabled": false,
+      "running": false
+    },
+    "brandbot": {
+      "enabled": false,
+      "running": false
+    },
+    "console-getty": {
+      "enabled": false,
+      "running": false
+    },
+    "console-shell": {
+      "enabled": false,
+      "running": false
+    },
+    "container-getty@": {
+      "enabled": false,
+      "running": false
+    },
+    "cpupower": {
+      "enabled": false,
+      "running": false
+    },
+    "crond": {
+      "enabled": true,
+      "running": true
+    },
+    "dbus-org.fedoraproject.FirewallD1": {
+      "enabled": true,
+      "running": false
+    },
+    "dbus-org.freedesktop.hostname1": {
+      "enabled": false,
+      "running": false
+    },
+    "dbus-org.freedesktop.locale1": {
+      "enabled": false,
+      "running": false
+    },
+    "dbus-org.freedesktop.login1": {
+      "enabled": false,
+      "running": false
+    },
+    "dbus-org.freedesktop.machine1": {
+      "enabled": false,
+      "running": false
+    },
+    "dbus-org.freedesktop.network1": {
+      "enabled": false,
+      "running": false
+    },
+    "dbus-org.freedesktop.NetworkManager": {
+      "enabled": true,
+      "running": false
+    },
+    "dbus-org.freedesktop.nm-dispatcher": {
+      "enabled": true,
+      "running": false
+    },
+    "dbus-org.freedesktop.timedate1": {
+      "enabled": false,
+      "running": false
+    },
+    "dbus": {
+      "enabled": false,
+      "running": true
+    },
+    "debug-shell": {
+      "enabled": false,
+      "running": false
+    },
+    "dm-event": {
+      "enabled": false,
+      "running": false
+    },
+    "dnsmasq": {
+      "enabled": false,
+      "running": false
+    },
+    "dracut-cmdline": {
+      "enabled": false,
+      "running": false
+    },
+    "dracut-initqueue": {
+      "enabled": false,
+      "running": false
+    },
+    "dracut-mount": {
+      "enabled": false,
+      "running": false
+    },
+    "dracut-pre-mount": {
+      "enabled": false,
+      "running": false
+    },
+    "dracut-pre-pivot": {
+      "enabled": false,
+      "running": false
+    },
+    "dracut-pre-trigger": {
+      "enabled": false,
+      "running": false
+    },
+    "dracut-pre-udev": {
+      "enabled": false,
+      "running": false
+    },
+    "dracut-shutdown": {
+      "enabled": false,
+      "running": false
+    },
+    "ebtables": {
+      "enabled": false,
+      "running": false
+    },
+    "emergency": {
+      "enabled": false,
+      "running": false
+    },
+    "firewalld": {
+      "enabled": true,
+      "running": true
+    },
+    "fstrim": {
+      "enabled": false,
+      "running": false
+    },
+    "getty@": {
+      "enabled": true,
+      "running": false
+    },
+    "halt-local": {
+      "enabled": false,
+      "running": false
+    },
+    "initrd-cleanup": {
+      "enabled": false,
+      "running": false
+    },
+    "initrd-parse-etc": {
+      "enabled": false,
+      "running": false
+    },
+    "initrd-switch-root": {
+      "enabled": false,
+      "running": false
+    },
+    "initrd-udevadm-cleanup-db": {
+      "enabled": false,
+      "running": false
+    },
+    "iprdump": {
+      "enabled": false,
+      "running": false
+    },
+    "iprinit": {
+      "enabled": false,
+      "running": false
+    },
+    "iprupdate": {
+      "enabled": false,
+      "running": false
+    },
+    "irqbalance": {
+      "enabled": true,
+      "running": false
+    },
+    "kdump": {
+      "enabled": true,
+      "running": true
+    },
+    "kmod-static-nodes": {
+      "enabled": false,
+      "running": true
+    },
+    "ldconfig": {
+      "enabled": false,
+      "running": false
+    },
+    "lvm2-lvmetad": {
+      "enabled": false,
+      "running": true
+    },
+    "lvm2-lvmpolld": {
+      "enabled": false,
+      "running": false
+    },
+    "lvm2-monitor": {
+      "enabled": true,
+      "running": true
+    },
+    "lvm2-pvscan@": {
+      "enabled": false,
+      "running": false
+    },
+    "messagebus": {
+      "enabled": false,
+      "running": false
+    },
+    "microcode": {
+      "enabled": true,
+      "running": false
+    },
+    "NetworkManager-dispatcher": {
+      "enabled": true,
+      "running": false
+    },
+    "NetworkManager-wait-online": {
+      "enabled": false,
+      "running": false
+    },
+    "NetworkManager": {
+      "enabled": true,
+      "running": true
+    },
+    "plymouth-halt": {
+      "enabled": false,
+      "running": false
+    },
+    "plymouth-kexec": {
+      "enabled": false,
+      "running": false
+    },
+    "plymouth-poweroff": {
+      "enabled": false,
+      "running": false
+    },
+    "plymouth-quit-wait": {
+      "enabled": false,
+      "running": false
+    },
+    "plymouth-quit": {
+      "enabled": false,
+      "running": false
+    },
+    "plymouth-read-write": {
+      "enabled": false,
+      "running": false
+    },
+    "plymouth-reboot": {
+      "enabled": false,
+      "running": false
+    },
+    "plymouth-start": {
+      "enabled": false,
+      "running": false
+    },
+    "plymouth-switch-root": {
+      "enabled": false,
+      "running": false
+    },
+    "polkit": {
+      "enabled": false,
+      "running": true
+    },
+    "postfix": {
+      "enabled": true,
+      "running": true
+    },
+    "quotaon": {
+      "enabled": false,
+      "running": false
+    },
+    "rc-local": {
+      "enabled": false,
+      "running": false
+    },
+    "rdisc": {
+      "enabled": false,
+      "running": false
+    },
+    "rdma": {
+      "enabled": false,
+      "running": false
+    },
+    "rescue": {
+      "enabled": false,
+      "running": false
+    },
+    "rhel-autorelabel-mark": {
+      "enabled": false,
+      "running": false
+    },
+    "rhel-autorelabel": {
+      "enabled": false,
+      "running": false
+    },
+    "rhel-configure": {
+      "enabled": false,
+      "running": false
+    },
+    "rhel-dmesg": {
+      "enabled": false,
+      "running": true
+    },
+    "rhel-domainname": {
+      "enabled": false,
+      "running": false
+    },
+    "rhel-import-state": {
+      "enabled": false,
+      "running": true
+    },
+    "rhel-loadmodules": {
+      "enabled": false,
+      "running": false
+    },
+    "rhel-readonly": {
+      "enabled": false,
+      "running": true
+    },
+    "rsyslog": {
+      "enabled": true,
+      "running": true
+    },
+    "serial-getty@": {
+      "enabled": false,
+      "running": false
+    },
+    "sshd-keygen": {
+      "enabled": false,
+      "running": false
+    },
+    "sshd": {
+      "enabled": true,
+      "running": true
+    },
+    "sshd@": {
+      "enabled": false,
+      "running": false
+    },
+    "systemd-ask-password-console": {
+      "enabled": false,
+      "running": false
+    },
+    "systemd-ask-password-plymouth": {
+      "enabled": false,
+      "running": false
+    },
+    "systemd-ask-password-wall": {
+      "enabled": false,
+      "running": false
+    },
+    "systemd-backlight@": {
+      "enabled": false,
+      "running": false
+    },
+    "systemd-binfmt": {
+      "enabled": false,
+      "running": false
+    },
+    "systemd-bootchart": {
+      "enabled": false,
+      "running": false
+    },
+    "systemd-firstboot": {
+      "enabled": false,
+      "running": false
+    },
+    "systemd-fsck-root": {
+      "enabled": false,
+      "running": false
+    },
+    "systemd-fsck@": {
+      "enabled": false,
+      "running": false
+    },
+    "systemd-halt": {
+      "enabled": false,
+      "running": false
+    },
+    "systemd-hibernate-resume@": {
+      "enabled": false,
+      "running": false
+    },
+    "systemd-hibernate": {
+      "enabled": false,
+      "running": false
+    },
+    "systemd-hostnamed": {
+      "enabled": false,
+      "running": false
+    },
+    "systemd-hwdb-update": {
+      "enabled": false,
+      "running": false
+    },
+    "systemd-hybrid-sleep": {
+      "enabled": false,
+      "running": false
+    },
+    "systemd-initctl": {
+      "enabled": false,
+      "running": false
+    },
+    "systemd-journal-catalog-update": {
+      "enabled": false,
+      "running": false
+    },
+    "systemd-journal-flush": {
+      "enabled": false,
+      "running": true
+    },
+    "systemd-journald": {
+      "enabled": false,
+      "running": true
+    },
+    "systemd-kexec": {
+      "enabled": false,
+      "running": false
+    },
+    "systemd-localed": {
+      "enabled": false,
+      "running": false
+    },
+    "systemd-logind": {
+      "enabled": false,
+      "running": true
+    },
+    "systemd-machine-id-commit": {
+      "enabled": false,
+      "running": false
+    },
+    "systemd-machined": {
+      "enabled": false,
+      "running": false
+    },
+    "systemd-modules-load": {
+      "enabled": false,
+      "running": false
+    },
+    "systemd-nspawn@": {
+      "enabled": false,
+      "running": false
+    },
+    "systemd-poweroff": {
+      "enabled": false,
+      "running": false
+    },
+    "systemd-quotacheck": {
+      "enabled": false,
+      "running": false
+    },
+    "systemd-random-seed": {
+      "enabled": false,
+      "running": true
+    },
+    "systemd-readahead-collect": {
+      "enabled": true,
+      "running": false
+    },
+    "systemd-readahead-done": {
+      "enabled": false,
+      "running": false
+    },
+    "systemd-readahead-drop": {
+      "enabled": true,
+      "running": false
+    },
+    "systemd-readahead-replay": {
+      "enabled": true,
+      "running": false
+    },
+    "systemd-reboot": {
+      "enabled": false,
+      "running": false
+    },
+    "systemd-remount-fs": {
+      "enabled": false,
+      "running": true
+    },
+    "systemd-rfkill@": {
+      "enabled": false,
+      "running": false
+    },
+    "systemd-shutdownd": {
+      "enabled": false,
+      "running": false
+    },
+    "systemd-suspend": {
+      "enabled": false,
+      "running": false
+    },
+    "systemd-sysctl": {
+      "enabled": false,
+      "running": true
+    },
+    "systemd-timedated": {
+      "enabled": false,
+      "running": false
+    },
+    "systemd-tmpfiles-clean": {
+      "enabled": false,
+      "running": false
+    },
+    "systemd-tmpfiles-setup-dev": {
+      "enabled": false,
+      "running": true
+    },
+    "systemd-tmpfiles-setup": {
+      "enabled": false,
+      "running": true
+    },
+    "systemd-udev-settle": {
+      "enabled": false,
+      "running": false
+    },
+    "systemd-udev-trigger": {
+      "enabled": false,
+      "running": true
+    },
+    "systemd-udevd": {
+      "enabled": false,
+      "running": true
+    },
+    "systemd-update-done": {
+      "enabled": false,
+      "running": false
+    },
+    "systemd-update-utmp-runlevel": {
+      "enabled": false,
+      "running": false
+    },
+    "systemd-update-utmp": {
+      "enabled": false,
+      "running": true
+    },
+    "systemd-user-sessions": {
+      "enabled": false,
+      "running": true
+    },
+    "systemd-vconsole-setup": {
+      "enabled": false,
+      "running": true
+    },
+    "tcsd": {
+      "enabled": false,
+      "running": false
+    },
+    "teamd@": {
+      "enabled": false,
+      "running": false
+    },
+    "tuned": {
+      "enabled": true,
+      "running": true
+    },
+    "vboxadd-service": {
+      "enabled": true,
+      "running": true
+    },
+    "vboxadd-x11": {
+      "enabled": true,
+      "running": true
+    },
+    "vboxadd": {
+      "enabled": true,
+      "running": true
+    },
+    "wpa_supplicant": {
+      "enabled": false,
+      "running": true
     }
   }
 }
