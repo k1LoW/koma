@@ -51,6 +51,7 @@ block_device
 package
 user
 group
+service
 ```
 
 ## Contributing
