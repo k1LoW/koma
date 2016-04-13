@@ -1,6 +1,9 @@
+require 'koma/ext/specinfra/host_inventory/base'
+require 'koma/ext/specinfra/host_inventory/parser'
+
 module Specinfra
   class HostInventory
-    EXTRA_KEYS = %w(package user group)
+    EXTRA_KEYS = %w(package user group service)
 
     def self.inventory_keys
       KEYS + EXTRA_KEYS
