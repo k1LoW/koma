@@ -1,5 +1,3 @@
-require 'pp'
-
 class Specinfra::HostInventory::Parser::Redhat::Base::Service < Specinfra::HostInventory::Parser::Base
   class << self
     def parse(cmd_ret)
