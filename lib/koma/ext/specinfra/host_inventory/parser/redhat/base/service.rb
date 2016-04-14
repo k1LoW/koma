@@ -5,6 +5,7 @@ class Specinfra::HostInventory::Parser::Redhat::Base::Service < Specinfra::HostI
       lines = cmd_ret.split(/\n/)
       lines.each do |line|
         status = line.split("\t")
+        next unless status.count == 8
         service = status[0].strip
         enabled = status[4].include?(':on') # level 3
         cmd = backend.command.get(:check_service_is_running, service)

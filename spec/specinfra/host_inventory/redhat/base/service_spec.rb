@@ -24,6 +24,9 @@ mysqld\t0:off\t1:off\t2:on\t3:on\t4:on\t5:on\t6:off
 netconsole\t0:off\t1:off\t2:off\t3:off\t4:off\t5:off\t6:off
 netfs\t0:off\t1:off\t2:off\t3:off\t4:off\t5:off\t6:off
 network\t0:off\t1:off\t2:on\t3:on\t4:on\t5:on\t6:off
+
+xinetd based services:
+\trsync:\ton
 EOH
 
 describe Specinfra::HostInventory::Parser::Redhat::Base::Service do
