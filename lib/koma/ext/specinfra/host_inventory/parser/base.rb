@@ -1,8 +1,6 @@
 class Specinfra::HostInventory::Parser::Base
   class << self
-    def backend
-      @backend
-    end
+    attr_reader :backend
 
     def create(backend)
       @backend = backend
