@@ -37,10 +37,10 @@ And get stdout like [this](stdout_sample.json).
 ```sh
 $ koma ssh example.com,example.jp
 {
-  "example.com" : {
+  "example.com": {
     ...
   },
-  "example.jp" : {
+  "example.jp": {
     ...
   }
 }
