@@ -32,6 +32,20 @@ $ koma ssh example.com
 
 And get stdout like [this](stdout_sample.json).
 
+### Multi host gathering
+
+```sh
+$ koma ssh example.com,example.jp
+{
+  "example.com" : {
+    ...
+  },
+  "example.jp" : {
+    ...
+  }
+}
+```
+
 ## Host inventory keys
 
 ```sh
