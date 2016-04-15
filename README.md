@@ -32,7 +32,7 @@ $ koma ssh example.com
 
 And get stdout like [this](stdout_sample.json).
 
-### Multi host gathering
+### Gather multi host 
 
 ```sh
 $ koma ssh example.com,example.jp
