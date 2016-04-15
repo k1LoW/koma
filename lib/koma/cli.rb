@@ -69,5 +69,17 @@ module Koma
         puts key
       end
     end
+
+    def method_missing(command)
+out = <<-EOH
+
+  ((     ))
+((  _____  ))
+(U  ●   ●  U)
+  ((  ●  ))  < Could not find command "#{command}".
+
+EOH
+puts out
+    end
   end
 end
