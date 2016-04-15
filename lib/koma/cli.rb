@@ -54,7 +54,8 @@ module Koma
 
     desc 'keys', 'host inventory keys'
     def keys
-      Specinfra::HostInventory.inventory_keys.each do |key|
+      Koma::HostInventory.all_inventory_keys.each do |key|
+        key += ' (disabled)' if Koma::HostInventory.disabled_keys.include?(key)
         puts key
       end
     end
