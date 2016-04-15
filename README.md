@@ -51,7 +51,7 @@ $ koma ssh example.com,example.jp
 ```sh
 $ koma keys
 memory
-ec2
+ec2 (disabled)
 hostname
 domain
 fqdn
