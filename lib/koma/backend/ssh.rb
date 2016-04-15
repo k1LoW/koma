@@ -9,17 +9,17 @@ module Koma
         if host.include?(',')
           list = host.split(',')
           results = Parallel.map(list, in_thread: 4) do |h|
-            ssh_out(h, options)
+            gather_via_ssh(h, options)
           end
           arr = [list, results].transpose
           result = Hash[*arr.flatten]
         else
-          result = ssh_out(host, options)
+          result = gather_via_ssh(host, options)
         end
         result
       end
 
-      def ssh_out(host, options)
+      def gather_via_ssh(host, options)
         user, host = host.split('@') if host.include?('@')
         set :backend, :ssh
         set :host, host
