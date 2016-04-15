@@ -16,6 +16,10 @@ class Koma::Backend::Base
            else
              key.split(',')
            end
+    Koma::HostInventory.disabled_keys.each do |k|
+      keys.push(k) if @options["with-#{k}"]
+    end
+
     keys.each do |k|
       raise Koma::NotImplementedKeyError unless Koma::HostInventory.all_inventory_keys.include?(k)
       begin
