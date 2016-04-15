@@ -24,6 +24,11 @@ module Koma
            banner: '<port>',
            desc: 'port',
            aliases: :p
+    Koma::HostInventory.disabled_keys.each do |key|
+      option "with-#{key}",
+             type: :boolean,
+             desc: "enable #{key}"
+    end
     def ssh(host)
       backend = Koma::Backend::Ssh.new(host, options)
       if options[:yaml]
@@ -43,6 +48,11 @@ module Koma
            type: :boolean,
            desc: 'stdout YAML',
            aliases: :y
+    Koma::HostInventory.disabled_keys.each do |key|
+      option "with-#{key}",
+             type: :boolean,
+             desc: "enable #{key}"
+    end
     def exec
       backend = Koma::Backend::Exec.new(nil, options)
       if options[:yaml]
@@ -54,7 +64,8 @@ module Koma
 
     desc 'keys', 'host inventory keys'
     def keys
-      Specinfra::HostInventory.inventory_keys.each do |key|
+      Koma::HostInventory.all_inventory_keys.each do |key|
+        key += ' (disabled)' if Koma::HostInventory.disabled_keys.include?(key)
         puts key
       end
     end

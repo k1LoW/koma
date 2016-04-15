@@ -3,8 +3,6 @@ require 'parallel'
 module Koma
   module Backend
     class Ssh < Base
-      attr_reader :host, :options
-
       def gather
         if host.include?(',')
           list = host.split(',')

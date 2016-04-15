@@ -1,12 +1,18 @@
-require 'koma/ext/specinfra/host_inventory/base'
-require 'koma/ext/specinfra/host_inventory/parser'
-
-module Specinfra
+module Koma
   class HostInventory
     EXTRA_KEYS = %w(package user group service)
+    DISABLED_KEYS = %w(ec2)
 
     def self.inventory_keys
-      KEYS + EXTRA_KEYS
+      Specinfra::HostInventory::KEYS + EXTRA_KEYS - DISABLED_KEYS
+    end
+
+    def self.all_inventory_keys
+      Specinfra::HostInventory::KEYS + EXTRA_KEYS
+    end
+
+    def self.disabled_keys
+      DISABLED_KEYS
     end
 
     def each
@@ -29,6 +35,6 @@ module Specinfra
   end
 end
 
-Specinfra::HostInventory::EXTRA_KEYS.each do |k|
+Koma::HostInventory::EXTRA_KEYS.each do |k|
   require "koma/ext/specinfra/host_inventory/#{k}"
 end
