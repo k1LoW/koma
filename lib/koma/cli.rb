@@ -10,6 +10,10 @@ module Koma
            banner: '<key1,key2,..>',
            desc: 'inventory keys',
            aliases: :k
+    option :yaml,
+           type: :boolean,
+           desc: 'stdout YAML',
+           aliases: :y
     option :identity_file,
            type: :string,
            banner: '<identity_file>',
@@ -22,7 +26,11 @@ module Koma
            aliases: :p
     def ssh(host)
       backend = Koma::Backend::Ssh.new(host, options)
-      puts JSON.pretty_generate(backend.gather)
+      if options[:yaml]
+        puts YAML.dump(backend.gather)
+      else
+        puts JSON.pretty_generate(backend.gather)
+      end
     end
 
     desc 'exec', 'stdout local host inventory'
@@ -31,9 +39,17 @@ module Koma
            banner: '<key1,key2,..>',
            desc: 'inventory keys',
            aliases: :k
+    option :yaml,
+           type: :boolean,
+           desc: 'stdout YAML',
+           aliases: :y
     def exec
       backend = Koma::Backend::Exec.new(nil, options)
-      puts JSON.pretty_generate(backend.gather)
+      if options[:yaml]
+        puts YAML.dump(backend.gather)
+      else
+        puts JSON.pretty_generate(backend.gather)
+      end
     end
 
     desc 'keys', 'host inventory keys'
