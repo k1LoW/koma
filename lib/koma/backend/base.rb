@@ -16,6 +16,7 @@ class Koma::Backend::Base
              key.split(',')
            end
     keys.each do |k|
+      raise Koma::NotImplementedKeyError unless inventory_keys.include?(k)
       begin
         out[k] = Specinfra.backend.host_inventory[k]
         out[k] = Specinfra.backend.host_inventory[k].inspect if k == 'ec2'
