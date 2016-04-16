@@ -5,8 +5,8 @@ module Koma
     class Ssh < Base
       def gather
         if host.include?(',')
-          list = host.split(',')
-          results = Parallel.map(list, in_thread: 4) do |h|
+          list = host.split(',').uniq
+          results = Parallel.map(list) do |h|
             gather_via_ssh(h, options)
           end
           arr = [list, results].transpose

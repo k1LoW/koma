@@ -71,7 +71,7 @@ module Koma
     end
 
     def method_missing(command)
-out = <<-EOH
+      message = <<-EOH
 
   ((     ))
 ((  _____  ))
@@ -79,7 +79,7 @@ out = <<-EOH
   ((  ●  ))  < Could not find command "#{command}".
 
 EOH
-puts out
+      puts message
     end
   end
 end
