@@ -70,6 +70,15 @@ module Koma
       end
     end
 
+    option :version, type: :boolean, aliases: :v
+    def help(version = nil)
+      if version
+        puts Koma::VERSION
+      else
+        super
+      end
+    end
+
     def method_missing(command)
       message = <<-EOH
 
