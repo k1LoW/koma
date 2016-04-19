@@ -70,7 +70,7 @@ module Koma
       end
     end
 
-    option :version, type: :boolean, aliases: :v
+    option :version, type: :boolean, aliases: :V
     def help(version = nil)
       if version
         puts Koma::VERSION
