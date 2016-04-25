@@ -32,7 +32,7 @@ $ koma ssh example.com
 
 And get stdout like [this](stdout_sample.json).
 
-### Gather multi host 
+### Gather multiple hosts
 
 ```sh
 $ koma ssh example.com,example.jp
@@ -44,6 +44,12 @@ $ koma ssh example.com,example.jp
     ...
   }
 }
+```
+
+### Pro Tip: Gather multiple hosts with ~/.ssh/config
+
+```sh
+$ cat ~/.ssh/config | koma ssh --key platform,platform_version
 ```
 
 ## Host inventory keys

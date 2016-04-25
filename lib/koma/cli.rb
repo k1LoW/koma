@@ -4,7 +4,7 @@ require 'yaml'
 
 module Koma
   class CLI < Thor
-    desc 'ssh', 'stdout remote host inventory'
+    desc 'ssh <host1,host2,..>', 'stdout remote host inventory'
     option :key,
            type: :string,
            banner: '<key1,key2,..>',
@@ -29,7 +29,23 @@ module Koma
              type: :boolean,
              desc: "enable #{key}"
     end
-    def ssh(host)
+    def ssh(host = nil)
+      if host.nil?
+        begin
+          stdin = timeout(5) do
+            $stdin.read
+          end
+        rescue Timeout::Error
+          STDERR.puts 'ERROR: "koma ssh" was called with no arguments'
+          STDERR.puts 'Usage: "koma ssh <host1,host2,..>"'
+          return
+        end
+        ret = stdin.split("\n").select { |line| line =~ /^Host ([^\s\*]+)/ }.map do |line|
+          line =~ /^Host ([^\s]+)/
+          Regexp.last_match[1]
+        end
+        host = ret.join(',')
+      end
       backend = Koma::Backend::Ssh.new(host, options)
       if options[:yaml]
         puts YAML.dump(backend.gather)
