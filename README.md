@@ -63,7 +63,13 @@ Host example_jp
   IdentityFile /path/to/more/example_jp_rsa
 EOF
 
-$ cat ssh_config_tmp | koma ssh
+$ cat ssh_config_tmp | koma ssh --key platform,platform_version
+```
+
+Use [sconb](https://github.com/k1LoW/sconb).
+
+```sh
+$ sconb dump example_* | sconb restore | koma ssh --key platform,platform_version
 ```
 
 Gather vagrant box host inventory.
@@ -72,11 +78,6 @@ Gather vagrant box host inventory.
 $ vagrant ssh-config | koma ssh --key cpu,kernel
 ```
 
-Use [sconb](https://github.com/k1LoW/sconb).
-
-```sh
-$ sconb dump example.com | sconb restore | koma ssh --key platform,platform_version
-```
 
 ## Host inventory keys
 
