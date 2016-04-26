@@ -35,6 +35,7 @@ module Koma
           stdin = timeout(5) do
             $stdin.read
           end
+
         rescue Timeout::Error
           STDERR.puts 'ERROR: "koma ssh" was called with no arguments'
           STDERR.puts 'Usage: "koma ssh <host1,host2,..>"'
@@ -47,6 +48,7 @@ module Koma
         host = ret.join(',')
       end
       backend = Koma::Backend::Ssh.new(host, options)
+      backend.stdin = stdin if stdin
       if options[:yaml]
         puts YAML.dump(backend.gather)
       else
