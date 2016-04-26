@@ -66,9 +66,13 @@ EOF
 $ cat ssh_config_tmp | koma ssh
 ```
 
+Gather vagrant box host inventory.
+
 ```sh
 $ vagrant ssh-config | koma ssh --key cpu,kernel
 ```
+
+Use [sconb](https://github.com/k1LoW/sconb).
 
 ```sh
 $ sconb dump example.com | sconb restore | koma ssh --key platform,platform_version
