@@ -46,10 +46,32 @@ $ koma ssh example.com,example.jp
 }
 ```
 
-### Pro Tip: Gather multiple hosts with ~/.ssh/config
+### Pro Tip: Gather multiple hosts with ssh_config
 
 ```sh
-$ cat ~/.ssh/config | koma ssh --key platform,platform_version
+$ cat <<EOF > ssh_config_tmp
+Host example_com
+  User k1low
+  Hostname example.com
+  PreferredAuthentications publickey
+  IdentityFile /path/to/example_rsa
+
+Host example_jp
+  User someone
+  Hostname example.jp
+  PreferredAuthentications publickey
+  IdentityFile /path/to/more/example_jp_rsa
+EOF
+
+$ cat ssh_config_tmp | koma ssh
+```
+
+```sh
+$ vagrant ssh-config | koma ssh --key cpu,kernel
+```
+
+```sh
+$ sconb dump example.com | sconb restore | koma ssh --key platform,platform_version
 ```
 
 ## Host inventory keys
