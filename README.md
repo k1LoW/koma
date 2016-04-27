@@ -30,9 +30,9 @@ If you login remote server via `ssh example.com`, you can execute:
 $ koma ssh example.com
 ```
 
-And get stdout like [this](stdout_sample.json).
+And gather host inventory stdout like [this](stdout_sample.json).
 
-### Gather multiple hosts
+### Gather host inventory from multiple hosts
 
 ```sh
 $ koma ssh example.com,example.jp
@@ -46,7 +46,7 @@ $ koma ssh example.com,example.jp
 }
 ```
 
-### Pro Tip: Gather multiple hosts with ssh_config
+### Pro Tip: Gather host inventory from multiple hosts with ssh_config
 
 ```sh
 $ cat <<EOF > ssh_config_tmp
@@ -66,13 +66,13 @@ EOF
 $ cat ssh_config_tmp | koma ssh --key platform,platform_version
 ```
 
-Use [sconb](https://github.com/k1LoW/sconb).
+Use [sconb](https://github.com/k1LoW/sconb) to filter ~/.ssh/config.
 
 ```sh
 $ sconb dump example_* | sconb restore | koma ssh --key platform,platform_version
 ```
 
-Gather vagrant box host inventory.
+Gather vagrant host inventory.
 
 ```sh
 $ vagrant ssh-config | koma ssh --key cpu,kernel
