@@ -20,7 +20,39 @@ module Koma
         result
       end
 
+      def run_command(command)
+        if host.include?(',')
+          list = host.split(',').uniq
+          results = Parallel.map(list) do |h|
+            run_command_via_ssh(h, options, command)
+          end
+          arr = [list, results].transpose
+          result = Hash[*arr.flatten]
+        else
+          result = run_command_via_ssh(host, options, command)
+        end
+        result
+      end
+
       def gather_via_ssh(host, options)
+        set :ssh_options, build_ssh_options(host, options)
+        out(options[:key])
+      end
+
+      def run_command_via_ssh(host, options, command)
+        set :ssh_options, build_ssh_options(host, options)
+        result = Specinfra.backend.run_command(command)
+        {
+          exit_signal: result.exit_signal,
+          exit_status: result.exit_status,
+          stderr: result.stderr,
+          stdout: result.stdout
+        }
+      end
+
+      private
+
+      def build_ssh_options(host, options)
         user, host = host.split('@') if host.include?('@')
         set :backend, :ssh
         set :host, host
@@ -34,9 +66,7 @@ module Koma
           ssh_options[:keys] = [options[:identity_file]] if options[:identity_file]
           ssh_options[:port] = options[:port] if options[:port]
         end
-
-        set :ssh_options, ssh_options
-        out(options[:key])
+        ssh_options
       end
     end
   end
