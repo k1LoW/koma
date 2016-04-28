@@ -42,11 +42,13 @@ module Koma
       def run_command_via_ssh(host, options, command)
         set :ssh_options, build_ssh_options(host, options)
         result = Specinfra.backend.run_command(command)
-        {
-          exit_signal: result.exit_signal,
-          exit_status: result.exit_status,
-          stderr: result.stderr,
-          stdout: result.stdout
+        { command =>
+          {
+            exit_signal: result.exit_signal,
+            exit_status: result.exit_status,
+            stderr: result.stderr,
+            stdout: result.stdout
+          }
         }
       end
 

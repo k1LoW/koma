@@ -39,7 +39,7 @@ module Koma
     option :identity_file, type: :string, banner: '<identity_file>', desc: 'identity file', aliases: :i
     option :port, type: :numeric, banner: '<port>', desc: 'port', aliases: :p
     def run_command(host = nil, command = nil)
-      if stdin.nil?
+      if host.nil?
         STDERR.puts 'ERROR: "koma run-command" was called with no arguments'
         STDERR.puts 'Usage: "koma run-command <host1,host2,..> <command>"'
         return
