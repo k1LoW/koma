@@ -20,16 +20,16 @@ module Koma
         result
       end
 
-      def run_command(command)
+      def run_commands(commands)
         if host.include?(',')
           list = host.split(',').uniq
           results = Parallel.map(list) do |h|
-            run_command_via_ssh(h, options, command)
+            run_commands_via_ssh(h, options, commands)
           end
           arr = [list, results].transpose
           result = Hash[*arr.flatten]
         else
-          result = run_command_via_ssh(host, options, command)
+          result = run_commands_via_ssh(host, options, commands)
         end
         result
       end
@@ -39,17 +39,19 @@ module Koma
         out(options[:key])
       end
 
-      def run_command_via_ssh(host, options, command)
+      def run_commands_via_ssh(host, options, commands)
         set :ssh_options, build_ssh_options(host, options)
-        result = Specinfra.backend.run_command(command)
-        { command =>
-          {
+        results = {}
+        commands.each do |command|
+          result = Specinfra.backend.run_command(command)
+          results[command] = {
             exit_signal: result.exit_signal,
             exit_status: result.exit_status,
             stderr: result.stderr,
             stdout: result.stdout
           }
-        }
+        end
+        results
       end
 
       private
