@@ -34,25 +34,25 @@ module Koma
       end
     end
 
-    desc 'run-command <host1,host2,..> <command>', 'run command on a remote machine'
+    desc 'run-command <host1,host2,..> <command1> <command2> ...', 'run command on a remote machine'
     option :yaml, type: :boolean, desc: 'stdout YAML', aliases: :Y
     option :identity_file, type: :string, banner: '<identity_file>', desc: 'identity file', aliases: :i
     option :port, type: :numeric, banner: '<port>', desc: 'port', aliases: :p
-    def run_command(host = nil, command = nil)
+    def run_command(host = nil, *commands)
       if host.nil?
         STDERR.puts 'ERROR: "koma run-command" was called with no arguments'
         STDERR.puts 'Usage: "koma run-command <host1,host2,..> <command>"'
         return
       end
-      if command.nil?
-        command = host
+      if commands.empty?
+        commands = [host]
         begin
           stdin = timeout(1) { $stdin.read }
         rescue Timeout::Error
         end
         if stdin.nil?
-          STDERR.puts 'ERROR: "koma run-command" was called with no arguments'
-          STDERR.puts 'Usage: "koma run-command <host1,host2,..> <command>"'
+          STDERR.puts 'ERROR: "koma run-commands" was called with no arguments'
+          STDERR.puts 'Usage: "koma run-commands <host1,host2,..> <commands>"'
           return
         end
         ret = stdin.split("\n").select { |line| line =~ /^Host ([^\s\*]+)/ }.map do |line|
@@ -63,7 +63,7 @@ module Koma
       end
       backend = Koma::Backend::Ssh.new(host, options)
       backend.stdin = stdin if stdin
-      gathered = backend.run_command(command)
+      gathered = backend.run_commands(commands)
       if options[:yaml]
         puts YAML.dump(gathered)
       else
