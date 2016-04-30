@@ -86,7 +86,7 @@ Gather vagrant host inventory.
 $ vagrant ssh-config | koma ssh --key cpu,kernel
 ```
 
-### Rum command on remote hosts
+### Run command on remote hosts
 
 ```sh
 $ koma run-command example.com,example.jp uptime
