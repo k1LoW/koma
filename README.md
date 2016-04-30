@@ -24,6 +24,8 @@ $ gem install koma
 
 ## Usage
 
+### Gather remote host inventory
+
 If you login remote server via `ssh example.com`, you can execute:
 
 ```sh
@@ -31,6 +33,12 @@ $ koma ssh example.com
 ```
 
 And gather host inventory stdout like [this](stdout_sample.json).
+
+### Gather local host inventory
+
+```sh
+$ koma exec
+```
 
 ### Gather host inventory from multiple hosts
 
@@ -78,6 +86,29 @@ Gather vagrant host inventory.
 $ vagrant ssh-config | koma ssh --key cpu,kernel
 ```
 
+### Rum command on remote hosts
+
+```sh
+$ koma run-command example.com,example.jp uptime
+{
+  "example.com": {
+    "uptime": {
+      "exit_signal": null,
+      "exit_status": 0,
+      "stderr": "",
+      "stdout": " 00:18:10 up 337 days,  4:51,  1 user,  load average: 0.08, 0.02, 0.01\n"
+    }
+  },
+  "example.jp": {
+    "uptime": {
+      "exit_signal": null,
+      "exit_status": 0,
+      "stderr": "",
+      "stdout": " 00:10:09 up 182 days,  7:34,  1 user,  load average: 0.07, 0.03, 0.01\n"
+    }
+  }
+}
+```
 
 ## Host inventory keys
 

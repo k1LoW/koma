@@ -34,7 +34,7 @@ module Koma
       end
     end
 
-    desc 'run-command <host1,host2,..> <command1> <command2> ...', 'run command on a remote machine'
+    desc 'run-command <host1,host2,..> <command1> <command2> ...', 'run command on remote hosts'
     option :yaml, type: :boolean, desc: 'stdout YAML', aliases: :Y
     option :identity_file, type: :string, banner: '<identity_file>', desc: 'identity file', aliases: :i
     option :port, type: :numeric, banner: '<port>', desc: 'port', aliases: :p
