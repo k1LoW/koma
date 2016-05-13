@@ -17,7 +17,7 @@ class Koma::Backend::Base
              key.split(',')
            end
     Koma::HostInventory.disabled_keys.each do |k|
-      keys.push(k) if @options["with-#{k}"]
+      keys.push(k) if @options["enable-#{k}"]
     end
 
     keys.each do |k|

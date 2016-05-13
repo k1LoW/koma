@@ -10,7 +10,7 @@ module Koma
     option :identity_file, type: :string, banner: '<identity_file>', desc: 'identity file', aliases: :i
     option :port, type: :numeric, banner: '<port>', desc: 'port', aliases: :p
     Koma::HostInventory.disabled_keys.each do |key|
-      option "with-#{key}", type: :boolean, desc: "enable #{key}"
+      option "enable-#{key}", type: :boolean, desc: "enable #{key}"
     end
     def ssh(host = nil)
       if host.nil?
@@ -75,7 +75,7 @@ module Koma
     option :key, type: :string, banner: '<key1,key2,..>', desc: 'inventory keys', aliases: :k
     option :yaml, type: :boolean, desc: 'stdout YAML', aliases: :Y
     Koma::HostInventory.disabled_keys.each do |key|
-      option "with-#{key}", type: :boolean, desc: "enable #{key}"
+      option "enable-#{key}", type: :boolean, desc: "enable #{key}"
     end
     def exec
       backend = Koma::Backend::Exec.new(nil, options)
