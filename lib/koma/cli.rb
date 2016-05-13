@@ -4,6 +4,8 @@ require 'yaml'
 
 module Koma
   class CLI < Thor
+    class_option :version, type: :boolean, aliases: :V
+   
     desc 'ssh <host1,host2,..>', 'stdout remote host inventory'
     option :key, type: :string, banner: '<key1,key2,..>', desc: 'inventory keys', aliases: :k
     option :yaml, type: :boolean, desc: 'stdout YAML', aliases: :Y
@@ -94,9 +96,8 @@ module Koma
       end
     end
 
-    option :version, type: :boolean, aliases: :V
-    def help(version = nil)
-      if version
+    def help(command = nil)
+      if options[:version]
         puts Koma::VERSION
       else
         super
