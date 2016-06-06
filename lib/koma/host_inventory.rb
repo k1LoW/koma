@@ -1,6 +1,6 @@
 module Koma
   class HostInventory
-    EXTRA_KEYS = %w(package group service)
+    EXTRA_KEYS = %w(package service)
     DISABLED_KEYS = %w(ec2)
 
     def self.inventory_keys
