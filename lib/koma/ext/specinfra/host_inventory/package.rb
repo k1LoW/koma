@@ -4,7 +4,7 @@ module Specinfra
       def get
         cmd = backend.command.get(:get_inventory_package)
         ret = backend.run_command(cmd)
-        if ret.exit_status == 0
+        if ret.success?
           parse(ret.stdout)
         else
           nil
