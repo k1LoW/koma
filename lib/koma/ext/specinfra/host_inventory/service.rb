@@ -12,8 +12,7 @@ module Specinfra
       end
 
       def parse(cmd_ret)
-        parser = create_parser_class('service')
-        parser.parse(cmd_ret)
+        parser.get('service').parse(cmd_ret)
       end
     end
   end
