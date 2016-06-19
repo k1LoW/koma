@@ -20,7 +20,12 @@ module Specinfra
         version = @os_info[:release] ? "V#{@os_info[:release].to_i}" : nil
         common_class = Specinfra::HostInventory::Parser
         base_class = common_class.const_get('Base')
-        os_class = family.nil? ? base_class : common_class.const_get(family.capitalize)
+        begin
+          os_class = family.nil? ? base_class : common_class.const_get(family.capitalize)
+        rescue
+          parser_class = base_class.const_get(resource_type.to_camel_case)
+          return parser_class.create(Specinfra.backend)
+        end
 
         if family && version
           begin
