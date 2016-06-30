@@ -42,6 +42,8 @@ module Specinfra
         begin
           parser_class = version_class.const_get(resource_type.to_camel_case)
         rescue
+          version_class = os_class.const_get('Base')
+          parser_class = version_class.const_get(resource_type.to_camel_case)
         end
 
         parser_class.create(Specinfra.backend)
