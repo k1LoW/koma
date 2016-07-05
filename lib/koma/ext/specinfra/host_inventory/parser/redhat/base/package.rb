@@ -1,4 +1,4 @@
-class Specinfra::HostInventory::Parser::Redhat::Base::Package < Specinfra::HostInventory::Parser::Base::Package
+class Specinfra::HostInventory::Parser::Redhat::Base::Package < Specinfra::HostInventory::Parser::Linux::Package
   class << self
     def parse(cmd_ret)
       packages = {}
