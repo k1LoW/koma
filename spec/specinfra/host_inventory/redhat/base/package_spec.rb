@@ -19,6 +19,7 @@ EOH
 
 describe Specinfra::HostInventory::Package do
   let(:host_inventory) { nil }
+  set :os, { :family => 'redhat', :version => '7.2.1511' }
   describe 'Example of CentOS Linux release 7.2.1511' do
     ret = Specinfra::HostInventory::Package.new(host_inventory).parse(str)
     example do
