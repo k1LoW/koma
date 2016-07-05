@@ -1,4 +1,4 @@
-class Specinfra::HostInventory::Parser::Redhat::V7::Service < Specinfra::HostInventory::Parser::Base
+class Specinfra::HostInventory::Parser::Redhat::V7::Service < Specinfra::HostInventory::Parser::Redhat::Base::Service
   class << self
     def parse(cmd_ret)
       services = {}
