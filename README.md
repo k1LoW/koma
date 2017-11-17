@@ -1,6 +1,6 @@
 # Koma [![Gem](https://img.shields.io/gem/v/koma.svg)](https://rubygems.org/gems/koma) [![Build Status](https://travis-ci.org/k1LoW/koma.svg?branch=master)](https://travis-ci.org/k1LoW/koma)
 
-Koma gather host inventory without agent.
+Koma gathers host inventory without agent.
 
 ## Installation
 
