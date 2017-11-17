@@ -132,7 +132,7 @@ group
 service
 ```
 
-## Contributing
+## Contribution
 
 1. Fork it ( https://github.com/k1LoW/koma/fork )
 2. Create your feature branch (`git checkout -b my-new-feature`)
