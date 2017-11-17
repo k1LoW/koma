@@ -4,7 +4,7 @@ Koma gather host inventory without agent.
 
 ## Installation
 
-Add this line to your application's Gemfile:
+Add the following line to your application's Gemfile:
 
 ```ruby
 gem 'koma'
