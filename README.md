@@ -1,6 +1,6 @@
 # Koma [![Gem](https://img.shields.io/gem/v/koma.svg)](https://rubygems.org/gems/koma) [![Build Status](https://travis-ci.org/k1LoW/koma.svg?branch=master)](https://travis-ci.org/k1LoW/koma)
 
-Koma gathers host inventory without agent.
+Koma is an inventory monitoring tool that doesn’t require agent installation on the sever side.
 
 ## Installation
 
