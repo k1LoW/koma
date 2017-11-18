@@ -9,8 +9,8 @@ Gem::Specification.new do |spec|
   spec.authors       = ['k1LoW']
   spec.email         = ['k1lowxb@gmail.com']
 
-  spec.summary       = 'Koma gather host inventory without agent.'
-  spec.description   = 'Koma gather host inventory without agent.'
+  spec.summary       = 'Koma is an inventory monitoring tool that doesn’t require agent installation on the sever side.'
+  spec.description   = 'Koma is an inventory monitoring tool that doesn’t require agent installation on the sever side.'
   spec.homepage      = 'https://github.com/k1LoW/koma'
   spec.license       = 'MIT'
 
