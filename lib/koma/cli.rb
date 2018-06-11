@@ -1,6 +1,7 @@
 require 'thor'
 require 'json'
 require 'yaml'
+require 'csv'
 
 module Koma
   class CLI < Thor
@@ -9,6 +10,7 @@ module Koma
     desc 'ssh <host1,host2,..>', 'stdout remote host inventory'
     option :key, type: :string, banner: '<key1,key2,..>', desc: 'inventory keys', aliases: :k
     option :yaml, type: :boolean, desc: 'stdout YAML', aliases: :Y
+    option :csv, type: :boolean, desc: 'stdout CSV', aliases: :C
     option :identity_file, type: :string, banner: '<identity_file>', desc: 'identity file', aliases: :i
     option :port, type: :numeric, banner: '<port>', desc: 'port', aliases: :p
     Koma::HostInventory.disabled_keys.each do |key|
@@ -31,6 +33,8 @@ module Koma
       gathered = backend.gather
       if options[:yaml]
         puts YAML.dump(gathered)
+      elsif options[:csv]
+        puts csv_dump(host, gathered)
       else
         puts JSON.pretty_generate(gathered)
       end
@@ -38,6 +42,7 @@ module Koma
 
     desc 'run-command <host1,host2,..> <command1> <command2> ...', 'run command on remote hosts'
     option :yaml, type: :boolean, desc: 'stdout YAML', aliases: :Y
+    option :csv, type: :boolean, desc: 'stdout CSV', aliases: :C
     option :identity_file, type: :string, banner: '<identity_file>', desc: 'identity file', aliases: :i
     option :port, type: :numeric, banner: '<port>', desc: 'port', aliases: :p
     def run_command(host = nil, *commands)
@@ -68,6 +73,8 @@ module Koma
       gathered = backend.run_commands(commands)
       if options[:yaml]
         puts YAML.dump(gathered)
+      elsif options[:csv]
+        puts csv_dump(host, gathered)
       else
         puts JSON.pretty_generate(gathered)
       end
@@ -76,15 +83,19 @@ module Koma
     desc 'exec', 'stdout local host inventory'
     option :key, type: :string, banner: '<key1,key2,..>', desc: 'inventory keys', aliases: :k
     option :yaml, type: :boolean, desc: 'stdout YAML', aliases: :Y
+    option :csv, type: :boolean, desc: 'stdout CSV', aliases: :C
     Koma::HostInventory.disabled_keys.each do |key|
       option "enable-#{key}", type: :boolean, desc: "enable #{key}"
     end
     def exec
       backend = Koma::Backend::Exec.new(nil, options)
+      gathered = backend.gather
       if options[:yaml]
-        puts YAML.dump(backend.gather)
+        puts YAML.dump(gathered)
+      elsif options[:csv]
+        puts csv_dump(host, gathered)
       else
-        puts JSON.pretty_generate(backend.gather)
+        puts JSON.pretty_generate(gathered)
       end
     end
 
@@ -114,6 +125,46 @@ module Koma
 
 EOH
       puts message
+    end
+
+    private
+
+    def csv_dump(hoststr, gathered)
+      hosts = hoststr.split(',')
+      if gathered.keys.sort == hosts.sort
+        header = ['host'] + gathered.values.first.keys
+        csv_data = CSV.generate() do |csv|
+          csv << header
+          gathered.each do |host, vals|
+            results = []
+            vals.each do |_, v|
+              if v.is_a?(Hash) && v.key?(:stdout) && v[:exit_status] == 0
+                results.push(v[:stdout])
+              else
+                results.push(v)
+              end
+            end
+            cols = [host] + results
+            csv << cols
+          end
+        end
+      else
+        header = ['host'] + gathered.keys
+        csv_data = CSV.generate() do |csv|
+          csv << header
+          results = []
+          gathered.values.each do |v|
+            if v.is_a?(Hash) && v.key?(:stdout) && v[:exit_status] == 0
+              results.push(v[:stdout])
+            else
+              results.push(v)
+            end
+          end
+          cols = [hoststr] + results
+          csv << cols
+        end
+      end
+      return csv_data
     end
   end
 end
