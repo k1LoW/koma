@@ -23,11 +23,10 @@ module Koma
       def run_commands(commands)
         if host.include?(',')
           list = host.split(',').uniq
-          results = Parallel.map(list) do |h|
-            run_commands_via_ssh(h, options, commands)
+          result = {}
+          list.each do |h|
+            result[h] = run_commands_via_ssh(h, options, commands)
           end
-          arr = [list, results].transpose
-          result = Hash[*arr.flatten]
         else
           result = run_commands_via_ssh(host, options, commands)
         end
@@ -57,6 +56,7 @@ module Koma
       private
 
       def build_ssh_options(host, options)
+        Specinfra::Backend::Ssh.clear
         user, host = host.split('@') if host.include?('@')
         set :backend, :ssh
         set :host, host
